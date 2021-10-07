@@ -1,9 +1,11 @@
 package main
 
 import (
+	"encoding/gob"
 	"github.com/alexedwards/scs/v2"
-	"github.com/marstan/bookings/pkg/config"
-	"github.com/marstan/bookings/pkg/render"
+	"github.com/marstan/bookings/internals/config"
+	"github.com/marstan/bookings/internals/models"
+	"github.com/marstan/bookings/internals/render"
 	"log"
 	"net/http"
 	"time"
@@ -13,6 +15,8 @@ const portNumber = ":8080"
 var sessionManager *scs.SessionManager
 
 func main() {
+	gob.Register(models.Reservation{})
+
 	var app config.AppConfig
 
 	sessionManager = scs.New()

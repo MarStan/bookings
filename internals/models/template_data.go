@@ -1,5 +1,7 @@
 package models
 
+import "github.com/marstan/bookings/internals/forms"
+
 type TemplateData struct {
 	StringMap map[string]string
 	IntMap    map[int]int
@@ -9,4 +11,5 @@ type TemplateData struct {
 	Flash     string
 	Warning   string
 	Error     string
+	Form      *forms.Form
 }
